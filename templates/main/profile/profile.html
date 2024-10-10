@@ -99,62 +99,59 @@
             <div class="card mb-4">
                 <div class="card-header">{% trans 'Account Details' %}</div>
                 <div class="card-body">
-                    <form>
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
                         <!-- Form Group (username)-->
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername"> {% trans 'Username (how your name will appear to other' %} 
-                                users on the site)</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="{% trans 'Enter your username' %}"
-                                   value="username">
+                            <label class="small mb-1" for="inputUsername">{% trans 'Username (how your name will appear to other users on the site)' %}</label>
+                            <input class="form-control" id="inputUsername" type="text" name="username" placeholder="{% trans 'Enter your username' %}" value="{{ user.username }}">
                         </div>
+                        
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (first name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputFirstName">{% trans 'First name' %}</label>
-                                <input class="form-control" id="inputFirstName" type="text"
-                                       placeholder="{% trans 'Enter your first name' %}" value="Valerie">
+                                <input class="form-control" id="inputFirstName" type="text" name="first_name" placeholder="{% trans 'Enter your first name' %}" value="{{ user.first_name }}">
                             </div>
                             <!-- Form Group (last name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLastName">{% trans 'Last name' %}</label>
-                                <input class="form-control" id="inputLastName" type="text"
-                                       placeholder="{% trans 'Enter your last name' %}" value="Luna">
+                                <input class="form-control" id="inputLastName" type="text" name="last_name" placeholder="{% trans 'Enter your last name' %}" value="{{ user.last_name }}">
                             </div>
                         </div>
-                        <!-- Form Row        -->
+                        
+                        <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (organization name)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputOrgName">{% trans 'Organization name' %}</label>
-                                <input class="form-control" id="inputOrgName" type="text"
-                                       placeholder="{% trans 'Enter your organization name' %}" value="Start Bootstrap">
+                                <input class="form-control" id="inputOrgName" type="text" name="organization_name" placeholder="{% trans 'Enter your organization name' %}" value="{{ user.profile.organization_name }}">
                             </div>
                             <!-- Form Group (location)-->
                             <div class="col-md-6">
                                 <label class="small mb-1" for="inputLocation">{% trans 'Location' %}</label>
-                                <input class="form-control" id="inputLocation" type="text"
-                                       placeholder="{% trans 'Enter your location' %}" value="San Francisco, CA">
-                            </div>
-                        </div>
-                        <!-- Form Group (email address)-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">{% trans 'Email address' %}</label>
-                            <input class="form-control" id="inputEmailAddress" type="email"
-                                   placeholder="{% trans 'Enter your email address' %}" value="name@example.com" readonly
-                                   style="cursor: not-allowed;">
-                        </div>
-                        <!-- Linkedin profile link-->
-                        <div class="mb-3">
-                            <label class="small mb-1" for="linkedinProfileLink">{% trans 'LinkedIn profile link' %}</label>
-                            <input class="form-control" id="linkedinProfileLink" type="email"
-                                   placeholder="{% trans 'Enter your linkedIn account' %}"
-                                   value="https://www.linkedin.com/in/valerie-luna-123456789">
-                        </div>
-                        <!-- Save changes button-->
-                        <button class="btn" type="button">{% trans 'Save changes' %}</button>
-                    </form>
+                                <input class="form-control" id="inputLocation" type="text" name="location" placeholder="{% trans 'Enter your location' %}" value="{{ user.profile.location }}">
+            </div>
+        </div>
+        
+        <!-- Form Group (email address)-->
+        <div class="mb-3">
+            <label class="small mb-1" for="inputEmailAddress">{% trans 'Email address' %}</label>
+            <input class="form-control" id="inputEmailAddress" type="email" name="email" placeholder="{% trans 'Enter your email address' %}" value="{{ user.email }}" readonly style="cursor: not-allowed;">
+        </div>
+        
+        <!-- LinkedIn profile link-->
+        <div class="mb-3">
+            <label class="small mb-1" for="linkedinProfileLink">{% trans 'LinkedIn profile link' %}</label>
+            <input class="form-control" id="linkedinProfileLink" type="url" name="linkedin_url" placeholder="{% trans 'Enter your LinkedIn account' %}" value="{{ user.profile.linkedin_profile }}">
+        </div>
+        
+        <!-- Save changes button-->
+        <button class="btn btn-primary" type="submit">{% trans 'Save changes' %}</button>
+    </form>
                 </div>
+
             </div>
         </div>
     </div>

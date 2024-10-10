@@ -1,11 +1,12 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from users.views import validate_image_size
+from users.utils import validate_image_size
 
 
 class UserModel(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="usermodel")
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
@@ -14,7 +15,7 @@ class UserModel(models.Model):
     location = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
     linkedin_url = models.URLField(unique=True, blank=True, null=True)
-    picture = models.ImageField(upload_to='users', validators=[validate_image_size])
+    picture = models.ImageField(upload_to='users', validators=[validate_image_size], blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

@@ -1,25 +1,21 @@
-from django.core.exceptions import ValidationError
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
-from django.http import HttpResponse
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from users.form import RegistrationForm, LoginForm
+from users.form import RegistrationForm, LoginForm, ProfileUpdateForm
+from users.models import UserModel, TeamMemberModel
 from users.token import email_verification_token
-
-
-def validate_image_size(image):
-    max_size = 5 * 1024 * 1024  # 5MB in bytes
-    if image.size > max_size:
-        raise ValidationError("The maximum file size that can be uploaded is 5MB.")
 
 
 def verify_email(request, uidb64, token):
@@ -63,6 +59,7 @@ def send_email_verification(request, user):
 def register_view(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
+        print(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
             user.set_password(form.cleaned_data['password'])
@@ -85,9 +82,51 @@ def login_view(request):
             user = authenticate(request=request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                print(request.user)
                 return redirect("/")
             else:
                 messages.error(request, 'Invalid username or password')
                 return render(request, template_name='main/auth/login/login.html')
     else:
         return render(request, 'main/auth/login/login.html')
+
+
+def team_member_view(request):
+    team_members = TeamMemberModel.objects.all()
+    print(team_members)
+    context = {
+        'team_members': team_members
+    }
+    return render(request, 'index.html', context)
+
+# # Chronically saving user data between django-user and my user model
+# @receiver(post_save, sender=User)
+# def create_user_model(sender, instance, created, **kwargs):
+#     if created:
+#         UserModel.objects.create(
+#             user=instance,
+#             first_name=instance.first_name,
+#             last_name=instance.last_name,
+#             email=instance.email,
+#             username=instance.username,
+#             password=instance.password
+#         )
+#
+#
+# @receiver(post_save, sender=User)
+# def save_user_model(sender, instance, **kwargs):
+#     instance.usermodel.save()
+#
+#
+# @login_required
+# def update_profile(request):
+#     user_model = request.user.usermodel
+#     if request.method == 'POST':
+#         form = ProfileUpdateForm(request.POST, request.FILES, instance=user_model)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('feedback_offer:profile')
+#     else:
+#         form = ProfileUpdateForm(instance=user_model)
+#
+#     return render(request, 'main/profile/profile.html', {'form': form})
