@@ -7,6 +7,7 @@ class OfferModel(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    picture = models.ImageField(upload_to="images/%Y/%m/%d")
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -26,6 +27,14 @@ class ProblemModel(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['title']
+        verbose_name_plural = _('Problems')
+        verbose_name = _('Problem')
 
 
 class FAQModel(models.Model):

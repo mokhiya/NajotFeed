@@ -25,7 +25,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #my_apps
-    'users'
+    'users',
+    'feedback_offer'
 ]
 
 MIDDLEWARE = [
@@ -94,11 +95,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'ru'
 LANGUAGES = (
+    ('ru', 'Russian'),
     ('en', 'English'),
-    ('uz', 'Uzbek'),
-    ('ru', 'Russian')
+    ('uz', 'Uzbek')
 )
 LOCALE_PATHS = [BASE_DIR / 'locale']
 

@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">H
 <head>
@@ -41,26 +42,26 @@
             </div>
             <a href="../../../index.html" type="button" class="btn btn-secondary back-home">Home</a>
             <form id="signUpForm">
-                <h4 class="form-title">Submit a problem</h4>
+                <h4 class="form-title">{% trans 'Submit a problem' %}</h4>
                 <div class="form-group mt-4">
-                    <label for="problemTitle">Title</label>
+                    <label for="problemTitle">{% trans 'Title' %} </label>
                     <input type="text" class="form-control" id="problemTitle" placeholder="Enter problem title">
                 </div>
                 <div class="form-group">
-                    <label for="problemDescription">Description</label>
+                    <label for="problemDescription">{% trans 'Description' %}</label>
                     <textarea class="form-control" id="problemDescription"
                               placeholder="Enter problem description" maxlength="2000"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
             </form>
             <form id="signInForm" style="display: none;">
-                <h4 class="form-title">Submit a offer</h4>
+                <h4 class="form-title">{% trans 'Submit a offer' %}</h4>
                 <div class="form-group mt-4">
-                    <label for="offerTitle">Title</label>
+                    <label for="offerTitle">{% trans 'Title' %}</label>
                     <input type="text" class="form-control" id="offerTitle" placeholder="Enter offer title">
                 </div>
                 <div class="form-group">
-                    <label for="offerDescription">Description</label>
+                    <label for="offerDescription">{% trans 'Description' %}</label>
                     <textarea class="form-control" id="offerDescription"
                               placeholder="Enter offer description" maxlength="2000"></textarea>
                 </div>

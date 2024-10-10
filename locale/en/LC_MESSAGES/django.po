@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-09 15:50+0500\n"
+"POT-Creation-Date: 2024-10-10 14:03+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,183 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-#: .\feedback_offer\models.py:19
+
+#: .\feedback_offer\models.py:20 .\templates\index.html:70
+#: .\templates\main\offers\offer.html:116
 msgid "Offers"
 msgstr ""
 
-#: .\feedback_offer\models.py:20
+#: .\feedback_offer\models.py:21
 msgid "Offer"
 msgstr ""
 
-#: .\feedback_offer\models.py:43
+#: .\feedback_offer\models.py:36 .\templates\index.html:66
+#: .\templates\index.html:119
+msgid "Problems"
+msgstr ""
+
+#: .\feedback_offer\models.py:37
+msgid "Problem"
+msgstr ""
+
+#: .\feedback_offer\models.py:52
 msgid "FAQs"
 msgstr ""
 
-#: .\feedback_offer\models.py:44
+#: .\feedback_offer\models.py:53
 msgid "FAQ"
+msgstr ""
+
+#: .\templates\index.html:49 .\templates\index.html:102
+msgid "Log in"
+msgstr ""
+
+#: .\templates\index.html:62 .\templates\index.html:729
+#: .\templates\main\offers\offer.html:780
+msgid "Home"
+msgstr ""
+
+#: .\templates\index.html:74
+msgid "Comments"
+msgstr ""
+
+#: .\templates\index.html:115
+msgid "Exchange of ideas"
+msgstr ""
+
+#: .\templates\index.html:117
+msgid "Online platform for requests and offers"
+msgstr ""
+
+#: .\templates\index.html:121
+msgid "Make an offer"
+msgstr ""
+
+#: .\templates\index.html:149
+msgid "Brief information about the site"
+msgstr ""
+
+#: .\templates\index.html:152
+msgid "Najot Ta'lim Feedback"
+msgstr ""
+
+#: .\templates\index.html:155
+msgid ""
+"\n"
+"                            The Najot Ta'lim Feedback Site is designed to "
+"collect and analyze feedback on services,\n"
+"                            classes, and overall experiences at the Najot "
+"Ta'lim educational center. The site allows\n"
+"                            students and their parents to identify strengths "
+"and areas for improvement at the center.\n"
+"                            Feedback is gathered through an online form, "
+"enhancing transparency and openness. The\n"
+"                            collected feedback is used to improve services "
+"and introduce new opportunities. The site\n"
+"                            also showcases the center’s achievements and "
+"successes, providing inspiration and\n"
+"                            strengthening its image.\n"
+"                        "
+msgstr ""
+
+#: .\templates\index.html:178
+msgid "Questions - Answers"
+msgstr ""
+
+#: .\templates\index.html:180
+msgid "Frequently asked questions"
+msgstr ""
+
+#: .\templates\index.html:260
+msgid "Team"
+msgstr ""
+
+#: .\templates\index.html:262
+msgid "About the participants in the team"
+msgstr ""
+
+#: .\templates\index.html:461
+msgid "Appeals"
+msgstr ""
+
+#: .\templates\index.html:463
+msgid "Best offers"
+msgstr ""
+
+#: .\templates\index.html:732 .\templates\main\offers\offer.html:783
+msgid "Terms"
+msgstr ""
+
+#: .\templates\index.html:735 .\templates\main\offers\offer.html:786
+msgid "Privacy Policy"
+msgstr ""
+
+#: .\templates\index.html:738 .\templates\main\offers\offer.html:789
+msgid "Contact"
+msgstr ""
+
+#: .\templates\main\comments\comment.html:10
+msgid "Najot Ta'lim | Comment"
+msgstr ""
+
+#: .\templates\main\comments\comment.html:43
+msgid "Who wrote a comment"
+msgstr ""
+
+#: .\templates\main\comments\comment.html:209
+msgid "Offer title"
+msgstr ""
+
+#: .\templates\main\forms\offer\offer-form.html:45
+msgid "Submit a problem"
+msgstr ""
+
+#: .\templates\main\forms\offer\offer-form.html:47
+#: .\templates\main\forms\offer\offer-form.html:60
+msgid "Title"
+msgstr ""
+
+#: .\templates\main\forms\offer\offer-form.html:51
+#: .\templates\main\forms\offer\offer-form.html:64
+msgid "Description"
+msgstr ""
+
+#: .\templates\main\forms\offer\offer-form.html:55
+msgid "Submit"
+msgstr ""
+
+#: .\templates\main\forms\offer\offer-form.html:58
+msgid "Submit a offer"
+msgstr ""
+
+#: .\templates\main\offers\offer.html:98
+msgid "Show Offers"
+msgstr ""
+
+#: .\templates\main\offers\offer.html:99
+msgid "Show Demands"
+msgstr ""
+
+#: .\templates\main\offers\offer.html:100
+msgid "Show My Offers"
+msgstr ""
+
+#: .\templates\main\offers\offer.html:101
+msgid "Show My Written Offers"
+msgstr ""
+
+#: .\users\models.py:20
+msgid "User"
+msgstr ""
+
+#: .\users\models.py:21
+msgid "Users"
+msgstr ""
+
+#: .\users\models.py:40
+msgid "TeamMember"
+msgstr ""
+
+#: .\users\models.py:41
+msgid "TeamMembers"
 msgstr ""

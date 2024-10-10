@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -94,10 +95,10 @@
     <div id="button-container">
         <div class="select-category mr-5">
             <select class="form-select" id='data-selector' aria-label="Select category">
-                <option value="offers">Show Offers</option>
-                <option value="demands">Show Demands</option>
-                <option value="my-offers">Show My Offers</option>
-                <option value="my-written-offers">Show My Written Offers</option>
+                <option value="offers">{% trans 'Show Offers' %}</option>
+                <option value="demands">{% trans 'Show Demands' %}</option>
+                <option value="my-offers">{% trans 'Show My Offers' %}</option>
+                <option value="my-written-offers">{% trans 'Show My Written Offers' %}</option>
             </select>
         </div>
         <div class="input-group ml-5">
@@ -112,7 +113,7 @@
         </div>
     </div>
     <div id="card-container" class="row">
-        <h2 style="margin: 15px 5px">Offers</h2>
+        <h2 style="margin: 15px 5px">{% trans 'Offers' %}</h2>
 
         <!--
             Har bitta divni ichida o'zini classi bor. Ya'ni offer cardlari uchun offer degan,
@@ -775,17 +776,17 @@
             <div class="col-md-6">
                 <div class="copyright-menu">
                     <ul>
-                        <li>
-                            <a href="#">Home</a>
+                       <li>
+                            <a href="#"> {% trans 'Home' %}</a>
                         </li>
                         <li>
-                            <a href="#">Terms</a>
+                            <a href="#">{% trans 'Terms' %}</a>
                         </li>
                         <li>
-                            <a href="#">Privacy Policy</a>
+                            <a href="#">{% trans 'Privacy Policy' %}</a>
                         </li>
                         <li>
-                            <a href="#">Contact</a>
+                            <a href="#">{% trans 'Contact' %}</a>
                         </li>
                     </ul>
                 </div>

@@ -1,5 +1,8 @@
 <!doctype html>
+
 {% load static %}
+{% load the_tags %}
+{% load i18n %}
 <html lang="uz">
 <head>
     <meta charset="utf-8">
@@ -43,7 +46,7 @@
             <div class="d-lg-none ms-auto me-3">
                 <a href="main/auth/login/login.html" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                     <i class="btn-icon bi-person"></i>
-                    <span>Log in</span>
+                    <span>{% trans 'Log in' %}</span>
                 </a>
             </div>
 
@@ -56,39 +59,39 @@
                 <ul class="navbar-nav ms-lg-auto me-lg-4">
 
                     <li class="nav-item">
-                        <a class="nav-link navbar-nav-scroll" href="#section_1">Home</a>
+                        <a class="nav-link navbar-nav-scroll" href="#section_1">{% trans 'Home' %}</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'feedback_offer:problems' %}">Problems</a>
+                        <a class="nav-link" href="{% url 'feedback_offer:problems' %}">{% trans 'Problems' %}</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'feedback_offer:offers' %}">Offers</a>
+                        <a class="nav-link" href="{% url 'feedback_offer:offers' %}">{% trans 'Offers' %}</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'feedback_offer:comments' %}">Comments</a>
+                        <a class="nav-link" href="{% url 'feedback_offer:comments' %}">{% trans 'Comments' %}</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link " href="main/404/404.html">404</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <select class="form-select language-select" aria-label="Select language">
-                            <option value="en" selected>
-                                English
-                            </option>
-                            <option value="uz">
-                                Uzbek
-                            </option>
-                            <option value="ru">
-                                Rus
-                            </option>
+                  <li class="nav-item">
+                        <select class="form-select language-select" aria-label="Select language" onchange="location=this.value;">
+                            {% get_current_language as cur_lang %}
+                            {% get_available_languages as av_lang %}
+                            {% for language in av_lang %}
+                                {% if language.0 != cur_lang %}
+                                     <option value="{% get_full_url request language.0 %}" selected>
+                                         {{ language.1 }}
+                                    </option>
+                                {% else %}
+                                    <option value="{{ language.0 }}" disabled selected>
+                                        {{ language.1 }}
+                                    </option>
+                                {% endif %}
+                            {% endfor %}
                         </select>
-
                     </li>
+
 
                 </ul>
 
@@ -96,7 +99,7 @@
                     <a href="main/auth/login/login.html"
                        class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                         <i class="btn-icon bi-person"></i>
-                        <span>Log in</span>
+                        <span>{% translate 'Log in' %}</span>
                     </a>
                 </div>
             </div>
@@ -109,13 +112,13 @@
             <div class="row">
                 <div class="col-lg-6 col-12 mb-2 pb-2 pb-lg-0 mb-lg-0">
 
-                    <h6>Exchange of ideas</h6>
+                    <h6>{% trans 'Exchange of ideas' %}</h6>
 
-                    <h1 class="text-white mb-4">Online platform for requests and offers</h1>
+                    <h1 class="text-white mb-4"> {% trans 'Online platform for requests and offers' %}</h1>
 
-                    <a href="main/forms/offer/offer-form.html" class="btn custom-btn smoothscroll me-3">Problems</a>
+                    <a href="main/forms/offer/offer-form.html" class="btn custom-btn smoothscroll me-3">{% trans 'Problems' %}</a>
 
-                    <a href="main/auth/login/login.html" class="link link--kale smoothscroll">Make an offer</a>
+                    <a href="main/auth/login/login.html" class="link link--kale smoothscroll">{% trans 'Make an offer' %}</a>
                 </div>
                 <div class="hero-image-wrap col-lg-6 col-12 mt-3 mt-lg-0">
                     <dotlottie-player src="https://lottie.host/ef67cee9-3f8a-4da2-945f-ab8a83e541b0/QZXEjRpNmf.json"
@@ -143,18 +146,22 @@
 
                 <div class="col-lg-6 col-12">
                     <div class="book-section-info">
-                        <h6>Brief information about the site</h6>
+                        <h6>{% trans 'Brief information about the site' %}</h6>
 
 
-                        <h2 class="mb-4">Najot Ta'lim Feedback</h2>
+                        <h2 class="mb-4">{% trans "Najot Ta'lim Feedback" %}</h2>
 
-                        <p>The Najot Ta'lim Feedback Site is designed to collect and analyze feedback on services,
+                        <p>
+                            {% blocktrans %}
+                            The Najot Ta'lim Feedback Site is designed to collect and analyze feedback on services,
                             classes, and overall experiences at the Najot Ta'lim educational center. The site allows
                             students and their parents to identify strengths and areas for improvement at the center.
                             Feedback is gathered through an online form, enhancing transparency and openness. The
                             collected feedback is used to improve services and introduce new opportunities. The site
                             also showcases the center’s achievements and successes, providing inspiration and
-                            strengthening its image.</p>
+                            strengthening its image.
+                        {% endblocktrans %}
+                        </p>
                     </div>
                 </div>
 
@@ -168,9 +175,9 @@
             <div class="row">
 
                 <div class="col-lg-12 col-12 text-center">
-                    <h6>Questions - Answers</h6>
+                    <h6>{% trans 'Questions - Answers' %}</h6>
 
-                    <h2 class="mb-5">Frequently asked questions</h2>
+                    <h2 class="mb-5">{% trans 'Frequently asked questions' %}</h2>
                 </div>
 
                 <div class="col-lg-4 col-12">
@@ -250,9 +257,9 @@
 
     <section class="author-section section-padding" id="section_3">
         <div class="col-lg-12 col-12 text-center">
-            <h6>Team</h6>
+            <h6>{% trans 'Team' %}</h6>
 
-            <h2 class="mb-5">About the participants in the team</h2>
+            <h2 class="mb-5">{% trans 'About the participants in the team' %}</h2>
         </div>
         <div class="slider">
             <div class="slides-track">
@@ -451,9 +458,9 @@
             <div class="row">
 
                 <div class="col-lg-12 col-12 text-center mb-5">
-                    <h6>Appeals</h6>
+                    <h6>{% trans 'Appeals' %}</h6>
 
-                    <h2>Best offers</h2>
+                    <h2>{% trans 'Best offers' %}</h2>
                 </div>
                 <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
                     <div class="carousel-inner" style="padding: 0 20px">
@@ -719,16 +726,16 @@
                     <div class="copyright-menu">
                         <ul>
                             <li>
-                                <a href="#">Home</a>
+                                <a href="#"> {% trans 'Home' %}</a>
                             </li>
                             <li>
-                                <a href="#">Terms</a>
+                                <a href="#">{% trans 'Terms' %}</a>
                             </li>
                             <li>
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">{% trans 'Privacy Policy' %}</a>
                             </li>
                             <li>
-                                <a href="#">Contact</a>
+                                <a href="#">{% trans 'Contact' %}</a>
                             </li>
                         </ul>
                     </div>

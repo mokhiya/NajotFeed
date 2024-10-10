@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.conf import settings
+from django.utils import translation
+from django.utils.translation import get_language, get_language_info
 
 
 def home_page_view(request):
@@ -15,3 +18,4 @@ def offers_page_view(request):
 
 def comments_page_view(request):
     return render(request, template_name='main/offers/offer.html')
+

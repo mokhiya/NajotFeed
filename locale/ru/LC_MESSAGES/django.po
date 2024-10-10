@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-09 15:50+0500\n"
+"POT-Creation-Date: 2024-10-10 14:03+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,18 +19,206 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
-#: .\feedback_offer\models.py:19
+
+#: .\feedback_offer\models.py:20 .\templates\index.html:70
+#: .\templates\main\offers\offer.html:116
 msgid "Offers"
 msgstr "Офферы"
 
-#: .\feedback_offer\models.py:20
+#: .\feedback_offer\models.py:21
 msgid "Offer"
 msgstr "Оффер"
 
-#: .\feedback_offer\models.py:43
+#: .\feedback_offer\models.py:36 .\templates\index.html:66
+#: .\templates\index.html:119
+msgid "Problems"
+msgstr "Проблемы"
+
+#: .\feedback_offer\models.py:37
+msgid "Problem"
+msgstr "Проблема"
+
+#: .\feedback_offer\models.py:52
 msgid "FAQs"
 msgstr "ЧЗВы"
 
-#: .\feedback_offer\models.py:44
+#: .\feedback_offer\models.py:53
 msgid "FAQ"
 msgstr "ЧЗВ"
+
+#: .\templates\index.html:49 .\templates\index.html:102
+msgid "Log in"
+msgstr "Войти"
+
+#: .\templates\index.html:62 .\templates\index.html:729
+#: .\templates\main\offers\offer.html:780
+msgid "Home"
+msgstr "Главная"
+
+#: .\templates\index.html:74
+msgid "Comments"
+msgstr "Комментарии"
+
+#: .\templates\index.html:115
+msgid "Exchange of ideas"
+msgstr "Обмен идеями"
+
+#: .\templates\index.html:117
+msgid "Online platform for requests and offers"
+msgstr "Онлайн платформа для запросов и предложений"
+
+#: .\templates\index.html:121
+msgid "Make an offer"
+msgstr "Сделать предложение"
+
+#: .\templates\index.html:149
+msgid "Brief information about the site"
+msgstr "Краткая информация о сайте"
+
+#: .\templates\index.html:152
+msgid "Najot Ta'lim Feedback"
+msgstr ""
+
+#: .\templates\index.html:155
+msgid ""
+"\n"
+"                            The Najot Ta'lim Feedback Site is designed to "
+"collect and analyze feedback on services,\n"
+"                            classes, and overall experiences at the Najot "
+"Ta'lim educational center. The site allows\n"
+"                            students and their parents to identify strengths "
+"and areas for improvement at the center.\n"
+"                            Feedback is gathered through an online form, "
+"enhancing transparency and openness. The\n"
+"                            collected feedback is used to improve services "
+"and introduce new opportunities. The site\n"
+"                            also showcases the center’s achievements and "
+"successes, providing inspiration and\n"
+"                            strengthening its image.\n"
+"                        "
+msgstr ""
+"\n"
+"                            Сайт обратной связи Najot Ta'lim предназначен "
+"для сбора и анализа отзывов о услугах,\n"
+"                            занятиях и общем опыте в образовательном центре "
+"Najot Ta'lim. Сайт позволяет\n"
+"                            студентам и их родителям выявлять сильные "
+"стороны и области для улучшения в центре.\n"
+"                            Обратная связь собирается через онлайн-форму, "
+"что повышает прозрачность и открытость. Собранные\n"
+"                            отзывы используются для улучшения услуг и "
+"внедрения новых возможностей. Сайт\n"
+"                            также демонстрирует достижения и успехи центра, "
+"что вдохновляет и\n"
+"                            укрепляет его имидж.\n"
+"                        "
+
+#: .\templates\index.html:178
+msgid "Questions - Answers"
+msgstr "Вопросы - Ответы"
+
+#: .\templates\index.html:180
+msgid "Frequently asked questions"
+msgstr "Часто задаваемые вопросы"
+
+#: .\templates\index.html:260
+msgid "Team"
+msgstr "Команда"
+
+#: .\templates\index.html:262
+msgid "About the participants in the team"
+msgstr "О участниках команды"
+
+#: .\templates\index.html:461
+msgid "Appeals"
+msgstr "Обращения"
+
+#: .\templates\index.html:463
+msgid "Best offers"
+msgstr "Лучшие предложения"
+
+#: .\templates\index.html:732 .\templates\main\offers\offer.html:783
+msgid "Terms"
+msgstr "Условия"
+
+#: .\templates\index.html:735 .\templates\main\offers\offer.html:786
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
+
+#: .\templates\index.html:738 .\templates\main\offers\offer.html:789
+msgid "Contact"
+msgstr "Контакт"
+
+#: .\templates\main\comments\comment.html:10
+msgid "Najot Ta'lim | Comment"
+msgstr "Najot Ta'lim | Комментарий"
+
+#: .\templates\main\comments\comment.html:43
+msgid "Who wrote a comment"
+msgstr "Кто написал комментарий"
+
+#: .\templates\main\comments\comment.html:209
+#, fuzzy
+#| msgid "Offer"
+msgid "Offer title"
+msgstr "Название оффера"
+
+#: .\templates\main\forms\offer\offer-form.html:45
+msgid "Submit a problem"
+msgstr "Отправить проблему"
+
+#: .\templates\main\forms\offer\offer-form.html:47
+#: .\templates\main\forms\offer\offer-form.html:60
+msgid "Title"
+msgstr "Название"
+
+#: .\templates\main\forms\offer\offer-form.html:51
+#: .\templates\main\forms\offer\offer-form.html:64
+msgid "Description"
+msgstr "Описание"
+
+#: .\templates\main\forms\offer\offer-form.html:55
+msgid "Submit"
+msgstr "Отправить"
+
+#: .\templates\main\forms\offer\offer-form.html:58
+#, fuzzy
+#| msgid "Submit an offer"
+msgid "Submit a offer"
+msgstr "Отправить оффер"
+
+#: .\templates\main\offers\offer.html:98
+#, fuzzy
+#| msgid "Offers"
+msgid "Show Offers"
+msgstr "Офферы"
+
+#: .\templates\main\offers\offer.html:99
+msgid "Show Demands"
+msgstr "Показать запросы"
+
+#: .\templates\main\offers\offer.html:100
+#, fuzzy
+#| msgid "Offers"
+msgid "Show My Offers"
+msgstr "Показать мои офферы"
+
+#: .\templates\main\offers\offer.html:101
+msgid "Show My Written Offers"
+msgstr "Показать мои написанные офферы"
+
+#: .\users\models.py:20
+msgid "User"
+msgstr "Пользователь"
+
+#: .\users\models.py:21
+msgid "Users"
+msgstr "Пользователи"
+
+#: .\users\models.py:40
+msgid "TeamMember"
+msgstr "УчасникГруппы"
+
+#: .\users\models.py:41
+msgid "TeamMembers"
+msgstr "УчасникиГруппы"

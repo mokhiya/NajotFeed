@@ -19,8 +19,8 @@ class ProblemModelAdmin(admin.ModelAdmin):
 
 @admin.register(FAQModel)
 class FAQModelAdmin(admin.ModelAdmin):
-    list_display = ('question', 'name', 'created_at')
-    search_fields = ('question', 'name')
+    list_display = ('question', 'answer', 'created_at')
+    search_fields = ('question', 'answer')
     list_filter = ('created_at',)
 
 
