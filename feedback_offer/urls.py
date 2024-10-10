@@ -7,6 +7,6 @@ urlpatterns = [
     path('comments/', views.comments_page_view, name='comments'),
     path('offers/', views.offers_page_view, name='offers'),
     path('profile/', views.profile_page_view, name='profile'),
-    path('comment', views.comment_page_view, name='comment'),
+    path('comment/', views.comment_page_view, name='comment'),
     path('', views.home_page_view, name='index'),
 ]

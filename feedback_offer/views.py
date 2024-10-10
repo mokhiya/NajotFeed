@@ -7,13 +7,17 @@ from django.utils.translation import get_language, get_language_info
 
 from feedback_offer.form import ProblemForm, OfferForm
 from feedback_offer.models import FAQModel
+from users.models import TeamMemberModel
 
 
 def home_page_view(request):
     faqs = FAQModel.objects.all()
+    team_members = TeamMemberModel.objects.all()
     context = {
         'faqs': faqs,
+        'team_members': team_members,
     }
+
     return render(request, 'index.html', context)
 
 

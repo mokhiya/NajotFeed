@@ -33,7 +33,7 @@ class TeamMemberModel(models.Model):
     last_name = models.CharField(max_length=50)
     role = models.CharField(max_length=100)
     description = models.TextField()
-    picture = models.ImageField(upload_to='teams')
+    picture = models.ImageField(upload_to='team_pictures/')
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
