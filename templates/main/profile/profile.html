@@ -1,3 +1,5 @@
+{% load i18n %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,24 +13,19 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link href="../../css/bootstrap/bootstrap.min.css" rel="stylesheet">
-
-    <link href="../../css/bootstrap/bootstrap-icons.css" rel="stylesheet">
-
-    <link href="../../css/bootstrap/templatemo-ebook-landing.css" rel="stylesheet">
-
-    <link rel="icon" href="../../files/images/favicon.ico" type="image/x-icon">
-
-    <link rel="stylesheet" href="../../css/carusel/carusel.css">
-
-    <link rel="stylesheet" href="../../css/profile/style.css">
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/templatemo-ebook-landing.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'files/images/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/carusel/carusel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile/style.css' %}">
 </head>
 <body>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
         <a class="navbar-brand" href="../../index.html">
-            <i><img src="../../files/images/logo.png" alt="404" style="width: 60px;"></i>
+            <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
             <span>Najot Ta'lim</span>
         </a>
 
@@ -47,28 +44,25 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-lg-auto me-lg-4">
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_1">Home</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}">{% trans 'Home' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_2">The Site</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}#section_2">{% trans 'The Site' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_3">Team</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}#section_3">{% trans 'Team' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="#section_4">Appeals</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}#section_4">{% trans 'Appeals' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="main/offers/offer.html">Comments</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:comments' %}">{% trans 'Comments' %}</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="main/404/404.html">404</a>
-                </li>
+                
             </ul>
 
             <div class="d-none d-lg-block">
@@ -88,77 +82,77 @@
         <div class="col-xl-4">
             <!-- Profile picture card-->
             <div class="card mb-4 mb-xl-0">
-                <div class="card-header">Profile Picture</div>
+                <div class="card-header">{% trans 'Profile Picture' %}</div>
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
                     <img class="img-account-profile rounded-circle mb-2"
                          src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
                     <!-- Profile picture help block-->
-                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                    <div class="small font-italic text-muted mb-4">{% trans 'JPG or PNG no larger than 5 MB' %}</div>
                     <!-- Profile picture upload button-->
-                    <button class="btn" type="button">Upload new image</button>
+                    <button class="btn" type="button">{% trans 'Upload new image' %}</button>
                 </div>
             </div>
         </div>
         <div class="col-xl-8">
             <!-- Account details card-->
             <div class="card mb-4">
-                <div class="card-header">Account Details</div>
+                <div class="card-header">{% trans 'Account Details' %}</div>
                 <div class="card-body">
                     <form>
                         <!-- Form Group (username)-->
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputUsername">Username (how your name will appear to other
+                            <label class="small mb-1" for="inputUsername"> {% trans 'Username (how your name will appear to other' %} 
                                 users on the site)</label>
-                            <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username"
+                            <input class="form-control" id="inputUsername" type="text" placeholder="{% trans 'Enter your username' %}"
                                    value="username">
                         </div>
                         <!-- Form Row-->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (first name)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputFirstName">First name</label>
+                                <label class="small mb-1" for="inputFirstName">{% trans 'First name' %}</label>
                                 <input class="form-control" id="inputFirstName" type="text"
-                                       placeholder="Enter your first name" value="Valerie">
+                                       placeholder="{% trans 'Enter your first name' %}" value="Valerie">
                             </div>
                             <!-- Form Group (last name)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputLastName">Last name</label>
+                                <label class="small mb-1" for="inputLastName">{% trans 'Last name' %}</label>
                                 <input class="form-control" id="inputLastName" type="text"
-                                       placeholder="Enter your last name" value="Luna">
+                                       placeholder="{% trans 'Enter your last name' %}" value="Luna">
                             </div>
                         </div>
                         <!-- Form Row        -->
                         <div class="row gx-3 mb-3">
                             <!-- Form Group (organization name)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputOrgName">Organization name</label>
+                                <label class="small mb-1" for="inputOrgName">{% trans 'Organization name' %}</label>
                                 <input class="form-control" id="inputOrgName" type="text"
-                                       placeholder="Enter your organization name" value="Start Bootstrap">
+                                       placeholder="{% trans 'Enter your organization name' %}" value="Start Bootstrap">
                             </div>
                             <!-- Form Group (location)-->
                             <div class="col-md-6">
-                                <label class="small mb-1" for="inputLocation">Location</label>
+                                <label class="small mb-1" for="inputLocation">{% trans 'Location' %}</label>
                                 <input class="form-control" id="inputLocation" type="text"
-                                       placeholder="Enter your location" value="San Francisco, CA">
+                                       placeholder="{% trans 'Enter your location' %}" value="San Francisco, CA">
                             </div>
                         </div>
                         <!-- Form Group (email address)-->
                         <div class="mb-3">
-                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <label class="small mb-1" for="inputEmailAddress">{% trans 'Email address' %}</label>
                             <input class="form-control" id="inputEmailAddress" type="email"
-                                   placeholder="Enter your email address" value="name@example.com" readonly
+                                   placeholder="{% trans 'Enter your email address' %}" value="name@example.com" readonly
                                    style="cursor: not-allowed;">
                         </div>
                         <!-- Linkedin profile link-->
                         <div class="mb-3">
-                            <label class="small mb-1" for="linkedinProfileLink">Linkedin profile link</label>
+                            <label class="small mb-1" for="linkedinProfileLink">{% trans 'LinkedIn profile link' %}</label>
                             <input class="form-control" id="linkedinProfileLink" type="email"
-                                   placeholder="Enter your Linkedin profile link"
+                                   placeholder="{% trans 'Enter your linkedIn account' %}"
                                    value="https://www.linkedin.com/in/valerie-luna-123456789">
                         </div>
                         <!-- Save changes button-->
-                        <button class="btn" type="button">Save changes</button>
+                        <button class="btn" type="button">{% trans 'Save changes' %}</button>
                     </form>
                 </div>
             </div>

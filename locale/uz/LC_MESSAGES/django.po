@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-10 14:03+0500\n"
+"POT-Creation-Date: 2024-10-10 19:33+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: .\feedback_offer\models.py:20 .\templates\index.html:70
-#: .\templates\main\offers\offer.html:116
+#: .\templates\main\forms\offer\offer-form.html:40
+#: .\templates\main\offers\offer.html:112
 msgid "Offers"
 msgstr "Takliflar"
 
@@ -28,7 +29,7 @@ msgid "Offer"
 msgstr "Taklif"
 
 #: .\feedback_offer\models.py:36 .\templates\index.html:66
-#: .\templates\index.html:119
+#: .\templates\index.html:119 .\templates\main\forms\offer\offer-form.html:41
 msgid "Problems"
 msgstr "Muammolar"
 
@@ -48,12 +49,15 @@ msgstr "TTS"
 msgid "Log in"
 msgstr "Kirish"
 
-#: .\templates\index.html:62 .\templates\index.html:729
-#: .\templates\main\offers\offer.html:780
+#: .\templates\index.html:62 .\templates\index.html:683
+#: .\templates\main\forms\offer\offer-form.html:43
+#: .\templates\main\offers\offer.html:50 .\templates\main\offers\offer.html:776
+#: .\templates\main\profile\profile.html:47
 msgid "Home"
 msgstr "Asosiy"
 
-#: .\templates\index.html:74
+#: .\templates\index.html:74 .\templates\main\offers\offer.html:62
+#: .\templates\main\profile\profile.html:63
 msgid "Comments"
 msgstr "Izohlar"
 
@@ -109,6 +113,7 @@ msgstr ""
 "uchun ko'rib chiqiladi. Sayt, shuningdek,\n"
 "                            markaz obro'sini kuchaytirishga "
 "qaratilgan                            yutuqlarni o'zida aks ettiradi.\n"
+"                         "
 
 #: .\templates\index.html:178
 msgid "Questions - Answers"
@@ -118,33 +123,86 @@ msgstr "Savol-Javoblar"
 msgid "Frequently asked questions"
 msgstr "Takroran so'raluvchi savollar"
 
-#: .\templates\index.html:260
+#: .\templates\index.html:188
+msgid "Question"
+msgstr "Savol"
+
+#: .\templates\index.html:214 .\templates\main\profile\profile.html:55
 msgid "Team"
 msgstr "Jamoa"
 
-#: .\templates\index.html:262
+#: .\templates\index.html:216
 msgid "About the participants in the team"
 msgstr "Jamoa a'zolari haqida"
 
-#: .\templates\index.html:461
+#: .\templates\index.html:415 .\templates\main\profile\profile.html:59
 msgid "Appeals"
 msgstr "Arizalar"
 
-#: .\templates\index.html:463
+#: .\templates\index.html:417
 msgid "Best offers"
 msgstr "Eng yaxshi takliflar"
 
-#: .\templates\index.html:732 .\templates\main\offers\offer.html:783
+#: .\templates\index.html:686 .\templates\main\offers\offer.html:779
 msgid "Terms"
 msgstr "Shartlar"
 
-#: .\templates\index.html:735 .\templates\main\offers\offer.html:786
+#: .\templates\index.html:689 .\templates\main\offers\offer.html:782
 msgid "Privacy Policy"
 msgstr "Daxlsizlik siyosati"
 
-#: .\templates\index.html:738 .\templates\main\offers\offer.html:789
+#: .\templates\index.html:692 .\templates\main\offers\offer.html:785
 msgid "Contact"
 msgstr "Bog'lanish"
+
+#: .\templates\main\auth\login\login.html:47
+#: .\templates\main\auth\register\register.html:49
+msgid "Welcome to"
+msgstr "Xush kelibsiz "
+
+#: .\templates\main\auth\login\login.html:51
+#: .\templates\main\auth\login\login.html:73
+msgid "Login"
+msgstr "Kirish"
+
+#: .\templates\main\auth\login\login.html:76
+msgid "Does your account not exist?"
+msgstr "Akkauntingiz mavjud emasmi?"
+
+#: .\templates\main\auth\login\login.html:77
+msgid "Create account"
+msgstr "Akkaunt yaratish"
+
+#: .\templates\main\auth\register\register.html:53
+#: .\templates\main\auth\register\register.html:105
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
+
+#: .\templates\main\auth\register\register.html:58
+#: .\templates\main\profile\profile.html:114
+msgid "First name"
+msgstr "Ism"
+
+#: .\templates\main\auth\register\register.html:68
+#: .\templates\main\profile\profile.html:120
+msgid "Last name"
+msgstr "Familiya"
+
+#: .\templates\main\auth\register\register.html:78
+msgid "Email"
+msgstr "Elektron pochta"
+
+#: .\templates\main\auth\register\register.html:88
+msgid "Username"
+msgstr "Foydalanuvchi "
+
+#: .\templates\main\auth\register\register.html:98
+msgid "Password"
+msgstr "Parol"
+
+#: .\templates\main\auth\register\register.html:108
+msgid "Do you have an account?"
+msgstr "Akkauntingiz allaqachon mavjudmi?"
 
 #: .\templates\main\comments\comment.html:10
 msgid "Najot Ta'lim | Comment"
@@ -155,8 +213,6 @@ msgid "Who wrote a comment"
 msgstr "Izoh kim tomonidan qoldirildi"
 
 #: .\templates\main\comments\comment.html:209
-#, fuzzy
-#| msgid "Offer"
 msgid "Offer title"
 msgstr "Taklif nomi"
 
@@ -169,51 +225,148 @@ msgstr "Muammoni yuborish"
 msgid "Title"
 msgstr "Mavzu"
 
+#: .\templates\main\forms\offer\offer-form.html:48
+msgid "Enter problem title"
+msgstr "Taklif nomini kiriting"
+
 #: .\templates\main\forms\offer\offer-form.html:51
 #: .\templates\main\forms\offer\offer-form.html:64
 msgid "Description"
 msgstr "Bayon"
 
+#: .\templates\main\forms\offer\offer-form.html:53
+msgid "Enter problem description"
+msgstr "Muammo bayonini kiriting"
+
 #: .\templates\main\forms\offer\offer-form.html:55
+#: .\templates\main\forms\offer\offer-form.html:68
 msgid "Submit"
 msgstr "Yuborish"
 
 #: .\templates\main\forms\offer\offer-form.html:58
-msgid "Submit a offer"
+msgid "Submit an offer"
 msgstr "Taklifni yuborish"
 
-#: .\templates\main\offers\offer.html:98
-#, fuzzy
-#| msgid "Offers"
-msgid "Show Offers"
-msgstr "Takliflar"
+#: .\templates\main\forms\offer\offer-form.html:61
+msgid "Enter offer title"
+msgstr "Taklif nomini kiriting"
 
-#: .\templates\main\offers\offer.html:99
+#: .\templates\main\forms\offer\offer-form.html:66
+msgid "Enter offer description"
+msgstr "Taklif bayonini kiriting"
+
+#: .\templates\main\offers\offer.html:54
+msgid "Write an offer"
+msgstr "Taklifni yuborish"
+
+#: .\templates\main\offers\offer.html:58
+msgid "Landing page"
+msgstr "Bosh sahifa"
+
+#: .\templates\main\offers\offer.html:66
+msgid "Profile"
+msgstr "Profil"
+
+#: .\templates\main\offers\offer.html:94
+msgid "Show Offers"
+msgstr "Takliflarni ko'rsatish"
+
+#: .\templates\main\offers\offer.html:95
 msgid "Show Demands"
 msgstr "Talablarni ko'rsatish"
 
-#: .\templates\main\offers\offer.html:100
-#, fuzzy
-#| msgid "Offers"
+#: .\templates\main\offers\offer.html:96
 msgid "Show My Offers"
-msgstr "Takliflar"
+msgstr "Mening takliflarim"
 
-#: .\templates\main\offers\offer.html:101
+#: .\templates\main\offers\offer.html:97
 msgid "Show My Written Offers"
 msgstr "Mening yozma takliflarim"
 
-#: .\users\models.py:20
+#: .\templates\main\profile\profile.html:51
+msgid "The Site"
+msgstr "Sayt haqida"
+
+#: .\templates\main\profile\profile.html:85
+msgid "Profile Picture"
+msgstr "Profil rasmi"
+
+#: .\templates\main\profile\profile.html:91
+msgid "JPG or PNG no larger than 5 MB"
+msgstr "JPG yoki PNG rasm yuklash, 5mb dan oshmasin"
+
+#: .\templates\main\profile\profile.html:93
+msgid "Upload new image"
+msgstr "Yangi rasm yuklash"
+
+#: .\templates\main\profile\profile.html:100
+msgid "Account Details"
+msgstr "Akkaunt ma'lumotlari"
+
+#: .\templates\main\profile\profile.html:105
+msgid "Username (how your name will appear to other"
+msgstr "Uzerneym (siz boshqalarga shu ism orqali ko'rinasiz)"
+
+#: .\templates\main\profile\profile.html:107
+msgid "Enter your username"
+msgstr "Yuzerneymingizni kiriting"
+
+#: .\templates\main\profile\profile.html:116
+msgid "Enter your first name"
+msgstr "Ismingizni kiriting"
+
+#: .\templates\main\profile\profile.html:122
+msgid "Enter your last name"
+msgstr "Familiyangizni kiriting"
+
+#: .\templates\main\profile\profile.html:129
+msgid "Organization name"
+msgstr "Tashkilot nomi"
+
+#: .\templates\main\profile\profile.html:131
+msgid "Enter your organization name"
+msgstr "Tashkilot nomini kiriting"
+
+#: .\templates\main\profile\profile.html:135
+msgid "Location"
+msgstr "Manzil"
+
+#: .\templates\main\profile\profile.html:137
+msgid "Enter your location"
+msgstr "Manzilingizni kiriting"
+
+#: .\templates\main\profile\profile.html:142
+msgid "Email address"
+msgstr "Elektron pochta"
+
+#: .\templates\main\profile\profile.html:144
+msgid "Enter your email address"
+msgstr "Elektron pochtangizni yozing"
+
+#: .\templates\main\profile\profile.html:149
+msgid "LinkedIn profile link"
+msgstr "LinkedIn sahifasi"
+
+#: .\templates\main\profile\profile.html:151
+msgid "Enter your linkedIn account"
+msgstr "LinkedIn sahifasiga havola bering"
+
+#: .\templates\main\profile\profile.html:155
+msgid "Save changes"
+msgstr "O'zgarishlarni saqlash"
+
+#: .\users\models.py:26
 msgid "User"
-msgstr "Foydalanuvchi"
+msgstr "Foydalanuvchi "
 
-#: .\users\models.py:21
+#: .\users\models.py:27
 msgid "Users"
-msgstr "Foydalanuvchilar"
+msgstr "Foydalanuvchilar "
 
-#: .\users\models.py:40
+#: .\users\models.py:44
 msgid "TeamMember"
-msgstr "JamoaAzosi"
+msgstr "JamoaAzosi "
 
-#: .\users\models.py:41
+#: .\users\models.py:45
 msgid "TeamMembers"
-msgstr "JamoaAzolari"
+msgstr "JamoaAzolari "

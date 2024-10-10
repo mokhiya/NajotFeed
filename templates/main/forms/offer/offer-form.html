@@ -37,35 +37,35 @@
         </div>
         <div class="col-md-6">
             <div class="btn-group mb-3" role="group">
-                <button type="button" class="btn btn-secondary" id="signInBtn">Offers</button>
-                <button type="button" class="btn btn-secondary active" id="signUpBtn">Problems</button>
+                <button type="button" class="btn btn-secondary" id="signInBtn">{% trans 'Offers' %}</button>
+                <button type="button" class="btn btn-secondary active" id="signUpBtn">{% trans 'Problems' %}</button>
             </div>
-            <a href="../../../index.html" type="button" class="btn btn-secondary back-home">Home</a>
+            <a href="{% url 'feedback_offer:index' %}" type="button" class="btn btn-secondary back-home">{% trans 'Home' %}</a>
             <form id="signUpForm">
                 <h4 class="form-title">{% trans 'Submit a problem' %}</h4>
                 <div class="form-group mt-4">
                     <label for="problemTitle">{% trans 'Title' %} </label>
-                    <input type="text" class="form-control" id="problemTitle" placeholder="Enter problem title">
+                    <input type="text" class="form-control" id="problemTitle" placeholder="{% trans 'Enter problem title' %}">
                 </div>
                 <div class="form-group">
                     <label for="problemDescription">{% trans 'Description' %}</label>
                     <textarea class="form-control" id="problemDescription"
-                              placeholder="Enter problem description" maxlength="2000"></textarea>
+                              placeholder="{% trans 'Enter problem description' %}" maxlength="2000"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
             </form>
             <form id="signInForm" style="display: none;">
-                <h4 class="form-title">{% trans 'Submit a offer' %}</h4>
+                <h4 class="form-title">{% trans 'Submit an offer' %}</h4>
                 <div class="form-group mt-4">
                     <label for="offerTitle">{% trans 'Title' %}</label>
-                    <input type="text" class="form-control" id="offerTitle" placeholder="Enter offer title">
+                    <input type="text" class="form-control" id="offerTitle" placeholder="{% trans 'Enter offer title' %}">
                 </div>
                 <div class="form-group">
                     <label for="offerDescription">{% trans 'Description' %}</label>
                     <textarea class="form-control" id="offerDescription"
-                              placeholder="Enter offer description" maxlength="2000"></textarea>
+                              placeholder="{% trans 'Enter offer description' %}" maxlength="2000"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
             </form>
         </div>
     </div>

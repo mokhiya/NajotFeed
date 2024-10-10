@@ -47,27 +47,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-lg-auto me-lg-4">
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}">Home</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}">{% trans 'Home' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../forms/offer/offer-form.html">Write an offer</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:offers' %}">{% trans 'Write an offer' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}">Landing page</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}">{% trans 'Landing page' %}</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../comments/comment.html">Comments</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:comment' %}">{% trans 'Comments' %}</a>
                 </li>
-
+                
                 <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../404/404.html">404</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="../profile/profile.html">Profile</a>
+                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:profile' %}">{% trans 'Profile' %}</a>
                 </li>
 
                 <li class="nav-item">

@@ -16,7 +16,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    #'modeltranslation',
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -139,3 +139,5 @@ try:
     from .local_settigs import *
 except ImportError:
     pass
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

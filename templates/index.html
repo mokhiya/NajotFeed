@@ -44,7 +44,7 @@
             </a>
 
             <div class="d-lg-none ms-auto me-3">
-                <a href="main/auth/login/login.html" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
+                <a href="{% url 'users:login' %}" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                     <i class="btn-icon bi-person"></i>
                     <span>{% trans 'Log in' %}</span>
                 </a>
@@ -96,7 +96,7 @@
                 </ul>
 
                 <div class="d-none d-lg-block">
-                    <a href="main/auth/login/login.html"
+                    <a href="{% url 'users:login' %}"
                        class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                         <i class="btn-icon bi-person"></i>
                         <span>{% translate 'Log in' %}</span>
@@ -116,9 +116,9 @@
 
                     <h1 class="text-white mb-4"> {% trans 'Online platform for requests and offers' %}</h1>
 
-                    <a href="main/forms/offer/offer-form.html" class="btn custom-btn smoothscroll me-3">{% trans 'Problems' %}</a>
+                    <a href="{% url 'feedback_offer:problems' %}" class="btn custom-btn smoothscroll me-3">{% trans 'Problems' %}</a>
 
-                    <a href="main/auth/login/login.html" class="link link--kale smoothscroll">{% trans 'Make an offer' %}</a>
+                    <a href="{% url 'users:login' %}" class="link link--kale smoothscroll">{% trans 'Make an offer' %}</a>
                 </div>
                 <div class="hero-image-wrap col-lg-6 col-12 mt-3 mt-lg-0">
                     <dotlottie-player src="https://lottie.host/ef67cee9-3f8a-4da2-945f-ab8a83e541b0/QZXEjRpNmf.json"
@@ -183,20 +183,11 @@
                 <div class="col-lg-4 col-12">
                     <nav id="navbar-example3" class="h-100 flex-column align-items-stretch">
                         <nav class="nav nav-pills flex-column">
-                            <a class="nav-link smoothscroll" href="#item-1"><strong>Question 1: </strong> How can I
-                                submit feedback?</a>
-
-                            <a class="nav-link smoothscroll" href="#item-2"><strong>Question 2: </strong>
-                                How is feedback processed and what results are published?</a>
-
-                            <a class="nav-link smoothscroll" href="#item-3"><strong>Question 3: </strong>Is my feedback
-                                anonymous?</a>
-
-                            <a class="nav-link smoothscroll" href="#item-4"><strong>Question 4: </strong>Can I
-                                participate in discussions on the site?</a>
-
-                            <a class="nav-link smoothscroll" href="#item-5"><strong>Question 5: </strong>What topics can
-                                be discussed in the forums?</a>
+                            {% for faq in faqs %}
+                            <a class="nav-link smoothscroll" href="#item-{{ forloop.counter }}">
+                                <strong>{% trans 'Question' %} {{ forloop.counter }}: </strong>{{ faq.question }}
+                            </a>
+                            {% endfor %}
                         </nav>
                     </nav>
                 </div>
@@ -204,50 +195,13 @@
                 <div class="col-lg-8 col-12">
                     <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true"
                          class="scrollspy-example-2" tabindex="0">
+                        {% for faq in faqs %}
                         <div class="scrollspy-example-item" id="item-1">
-                            <h5>1. Question: How can I submit feedback?</h5>
-
-                            <p>You can submit feedback using the online form available on our site. Simply fill out the
-                                required sections and submit your comments. Anonymity is an option if you prefer.</p>
+                            <h5>{{ forloop.counter }}. {% trans 'Question' %}: {{ faq.question }}</h5>
+                            <p>{{ faq.answer }}</p>
 
                         </div>
-
-                        <div class="scrollspy-example-item" id="item-2">
-                            <h5>2. Question: How is feedback processed and what results are published?</h5>
-
-                            <p> Feedback is regularly analyzed. Monthly or quarterly reports summarizing general trends
-                                and improvements are published on our site. Individual feedback responses are not
-                                provided, but general responses and discussion outcomes are shared.</p>
-
-                        </div>
-
-                        <div class="scrollspy-example-item" id="item-3">
-                            <h5>3. Question: Is my feedback anonymous?</h5>
-
-                            <p>
-                                Yes, you can submit feedback anonymously. Your personal information will not be
-                                disclosed, but your feedback will be used for general analysis.
-                            </p>
-                        </div>
-
-                        <div class="scrollspy-example-item" id="item-4">
-                            <h5>4. Question: Can I participate in discussions on the site?</h5>
-
-                            <p>
-                                Yes, the site includes a discussion forum where you can engage with other users. You can
-                                exchange opinions, discuss feedback, and participate in conversations on various topics.
-                            </p>
-                        </div>
-
-                        <div class="scrollspy-example-item" id="item-5">
-                            <h5>5. Question: What topics can be discussed in the forums?</h5>
-
-                            <p>
-                                The forums cover topics such as services, educational processes, teachers, classes, and
-                                other aspects of the educational center’s activities. You can share your opinions and
-                                engage in discussions with other users on these topics.
-                            </p>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
 
