@@ -106,6 +106,16 @@ def offer_detail_view(request, offer_id):
     return render(request, 'main/offers/offer.html', context=context)
 
 
+def demand_detail_view(request, demand_id):
+    demand = get_object_or_404(ProblemModel, id=demand_id)
+    demand.count_views()
+
+    context = {
+        'demand': demand,
+    }
+    return render(request, 'main/offers/offer.html', context=context)
+
+
 def comments_page_view(request):
     return render(request, template_name='main/offers/offer.html')
 

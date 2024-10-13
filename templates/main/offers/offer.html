@@ -112,25 +112,24 @@
         <h2 style="margin: 15px 5px">{% trans 'Offers' %}</h2>
 
         <!--   Offers      -->
-        {% for offer in offers %}
+    {% for offer in offers %}
         <div class="col-md-4 offer mb-4" style="margin-top: 25px;">
             <div class="card">
                 <div class="img-avatar">
                     <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
                 </div>
                 <div class="card-text">
-                    <div class="title-total">
-                        <a href="{% url 'feedback_offer:offer_detail' offer.id %}">
+                    <div class="title-total">{{ offer.created_at }}</div>
+                    <a href="{% url 'feedback_offer:offer_detail' offer.id %}">
                         <div class="title">{{ offer.title }}</div>
-                            <a href='#'>{{ offer.user.username }}</a>
-                            <div class="desc">{{ offer.description }}</div>
-                            <div class="actions">
-                                <i class="bi bi-heart">5</i>
-                                <i class="bi bi-eye">{{ offer.views_count }}</i>
-                                <i class="bi bi-chat">5</i>
+                        <a href='#'>{{ offer.user.username }}</a>
+                        <div class="desc">{{ offer.description }}</div>
+                        <div class="actions">
+                            <i class="bi bi-heart">5</i>
+                            <i class="bi bi-eye">{{ offer.views_count }}</i>
+                            <i class="bi bi-chat">5</i>
                         </div>
-                        </a>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -147,11 +146,11 @@
                     <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
                 </div>
                 <div class="card-text">
-                    <div class="title-total">
+                    <div class="title-total" {{ demand.created_at }}>
+                        <a href="{% url 'feedback_offer:demand_detail' demand_id.id %}">
                         <div class="title">{{ demand.title }}</div>
                         <a href='#'>Demands</a>
-
-                        <div class="desc">{{ demand.description }}
+                        <div class="desc">{{ demand.description|truncatechars:100 }}
                         </div>
                         <div class="actions">
                             <i class="bi bi-heart">{{ demand.count_view }}</i>

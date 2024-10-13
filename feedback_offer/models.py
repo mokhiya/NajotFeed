@@ -41,6 +41,10 @@ class ProblemModel(models.Model):
         verbose_name_plural = _('Problems')
         verbose_name = _('Problem')
 
+    def count_views(self):
+        self.views_count += 1
+        self.save()
+
 
 class ProblemCommentModel(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
