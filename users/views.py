@@ -1,20 +1,18 @@
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMultiAlternatives
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 
-from users.form import RegistrationForm, LoginForm, ProfileUpdateForm
-from users.models import UserModel, TeamMemberModel
+from users.form import RegistrationForm, LoginForm
+from users.models import TeamMemberModel
 from users.token import email_verification_token
 
 
@@ -91,6 +89,11 @@ def login_view(request):
         return render(request, 'main/auth/login/login.html')
 
 
+def logout_view(request):
+    logout(request)
+    return redirect(reverse_lazy('users:login'))
+
+
 def team_member_view(request):
     team_members = TeamMemberModel.objects.all()
     print(team_members)
@@ -99,34 +102,4 @@ def team_member_view(request):
     }
     return render(request, 'index.html', context)
 
-# # Chronically saving user data between django-user and my user model
-# @receiver(post_save, sender=User)
-# def create_user_model(sender, instance, created, **kwargs):
-#     if created:
-#         UserModel.objects.create(
-#             user=instance,
-#             first_name=instance.first_name,
-#             last_name=instance.last_name,
-#             email=instance.email,
-#             username=instance.username,
-#             password=instance.password
-#         )
-#
-#
-# @receiver(post_save, sender=User)
-# def save_user_model(sender, instance, **kwargs):
-#     instance.usermodel.save()
-#
-#
-# @login_required
-# def update_profile(request):
-#     user_model = request.user.usermodel
-#     if request.method == 'POST':
-#         form = ProfileUpdateForm(request.POST, request.FILES, instance=user_model)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('feedback_offer:profile')
-#     else:
-#         form = ProfileUpdateForm(instance=user_model)
-#
-#     return render(request, 'main/profile/profile.html', {'form': form})
+

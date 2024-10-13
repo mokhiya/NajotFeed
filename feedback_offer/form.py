@@ -11,4 +11,4 @@ class ProblemForm(forms.ModelForm):
 class OfferForm(forms.ModelForm):
     class Meta:
         model = OfferModel
-        fields = ['title', 'description', 'picture']
+        fields = ['title', 'description',]

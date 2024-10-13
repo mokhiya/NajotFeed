@@ -1,27 +1,33 @@
 from django.contrib.auth.models import AbstractUser, User
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from users.utils import validate_image_size
+
+def validate_image_size(image):
+    max_size = 5 * 1024 * 1024  # 5MB in bytes
+    if image.size > max_size:
+        raise ValidationError("The maximum file size that can be uploaded is 5MB.")
 
 
 class UserModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="usermodel")
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(unique=True)
-    username = models.CharField(max_length=50, unique=True)
-    organization_name = models.CharField(max_length=50)
-    location = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
+    organization_name = models.CharField(max_length=50, null=True, blank=True)
+    location = models.CharField(max_length=50, null=True, blank=True)
     linkedin_url = models.URLField(unique=True, blank=True, null=True)
-    picture = models.ImageField(upload_to='users', validators=[validate_image_size], blank=True, null=True)
+    picture = models.ImageField(
+        upload_to='users',
+        validators=[validate_image_size],
+        blank=True,
+        null=True,
+        default='default_avatar.png'
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.user.first_name} {self.user.last_name}"
 
     class Meta:
         verbose_name = _('User')

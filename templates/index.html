@@ -44,10 +44,17 @@
             </a>
 
             <div class="d-lg-none ms-auto me-3">
-                <a href="{% url 'users:login' %}" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
-                    <i class="btn-icon bi-person"></i>
-                    <span>{% trans 'Log in' %}</span>
-                </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'users:logout' %}" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
+                        <i class="btn-icon bi-box-arrow-right"></i>
+                        <span>{% trans 'Log out' %}</span>
+                    </a>
+                {% else %}
+                    <a href="{% url 'users:login' %}" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
+                        <i class="btn-icon bi-person"></i>
+                        <span>{% trans 'Log in' %}</span>
+                    </a>
+                {% endif %}
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -80,7 +87,7 @@
                             {% get_available_languages as av_lang %}
                             {% for language in av_lang %}
                                 {% if language.0 != cur_lang %}
-                                     <option value="{% get_full_url request language.0 %}" selected>
+                                     <option value="{% get_full_url request language.0 %}">
                                          {{ language.1 }}
                                     </option>
                                 {% else %}

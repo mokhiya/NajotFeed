@@ -4,9 +4,10 @@ from . import views
 app_name = 'feedback_offer'
 urlpatterns = [
     path('problems/', views.problems_page_view, name='problems'),
+    path('submit/', views.submit_offer_view, name='offer'),
     path('comments/', views.comments_page_view, name='comments'),
     path('offers/', views.offers_page_view, name='offers'),
-    path('profile/', views.profile_page_view, name='profile'),
     path('comment/', views.comment_page_view, name='comment'),
+    path('offer/<int:offer_id>/', views.offer_detail_view, name='offer_detail'),
     path('', views.home_page_view, name='index'),
 ]

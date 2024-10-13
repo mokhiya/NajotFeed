@@ -55,20 +55,39 @@
                 </div>
                 <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
             </form>
-            <form id="signInForm" method="post" action="{% url 'feedback_offer:problems' %}" style="display: none;">
-                {% csrf_token %}
-                <h4 class="form-title">{% trans 'Submit an offer' %}</h4>
-                <div class="form-group mt-4">
-                    <label for="offerTitle">{% trans 'Title' %}</label>
-                    <input type="text" name="title" class="form-control" id="offerTitle" placeholder="{% trans 'Enter offer title' %}">
-                </div>
-                <div class="form-group">
-                    <label for="offerDescription">{% trans 'Description' %}</label>
-                    <textarea class="form-control" name="description" id="offerDescription"
-                              placeholder="{% trans 'Enter offer description' %}" maxlength="2000"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
-            </form>
+            {% if user.is_authenticated %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert 
+                            {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" 
+                            role="alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form id="signInForm" method="post" action="{% url 'feedback_offer:offer' %}" style="display: none;">
+                    {% csrf_token %}
+                    <h4 class="form-title">{% trans 'Submit an offer' %}</h4>
+                    {{ form.non_field_errors }} 
+                    <div class="form-group mt-4">
+                        <label for="offerTitle">{% trans 'Title' %}</label>
+                        <input type="text" name="{{ form.title.name }}" class="form-control" id="offerTitle" 
+                               placeholder="{% trans 'Enter offer title' %}"
+                               value="{{ form.title.value|default_if_none:'' }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="offerDescription">{% trans 'Description' %}</label>
+                        <textarea class="form-control" name="{{ form.description.name }}" 
+                                  id="offerDescription"
+                                  placeholder="{% trans 'Enter offer description' %}" maxlength="2000"
+                        {{ form.description.value|default_if_none:'' }}></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
+                </form>
+            {% else %}
+                <p class="alert alert-warning">{% trans 'You must be logged in to submit an offer.' %}</p>
+                <a href="{% url 'users:login' %}" class="btn btn-primary">{% trans 'Login' %}</a>
+            {% endif %}
         </div>
     </div>
 </div>

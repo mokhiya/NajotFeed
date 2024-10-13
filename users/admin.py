@@ -24,7 +24,7 @@ class TeamMemberModelAdmin(MyTranslation):
 
 
 @admin.register(UserModel)
-class UserModelAdmin(MyTranslation):
-    list_display = ('first_name', 'last_name', 'password', 'email', 'picture', 'created_at')
-    list_filter = ('password', 'created_at')
-    search_fields = ('first_name', 'last_name', 'email', 'password')
+class UserModelAdmin(admin.ModelAdmin):
+    list_display = ('user__first_name', 'user__last_name', 'user__username', 'picture', 'created_at')
+    list_filter = ('created_at',)
+    search_fields = ('user__first_name', 'user__last_name', 'user__email', 'user__password')

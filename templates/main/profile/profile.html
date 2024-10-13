@@ -24,15 +24,15 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg">
     <div class="container">
-        <a class="navbar-brand" href="../../index.html">
+        <a class="navbar-brand" href="{% url 'feedback_offer:index' %}">
             <i><img src="{% static 'files/images/logo.png' %}" alt="404" style="width: 60px;"></i>
             <span>Najot Ta'lim</span>
         </a>
 
         <div class="d-lg-none ms-auto me-3">
-            <a href="main/auth/login/login.html" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
+            <a href="{% url 'users:login' %}" class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                 <i class="btn-icon bi-person"></i>
-                <span>Log in</span>
+                <span>{% trans 'Log in' %}</span>
             </a>
         </div>
 
@@ -66,10 +66,10 @@
             </ul>
 
             <div class="d-none d-lg-block">
-                <a href="main/auth/login/login.html"
+                <a href="{% url 'users:logout' %}"
                    class="btn custom-btn custom-border-btn btn-naira btn-inverted">
                     <i class="btn-icon bi-person"></i>
-                    <span>Log in</span>
+                    <span>{% trans 'Log out' %}</span>
                 </a>
             </div>
         </div>
@@ -86,7 +86,7 @@
                 <div class="card-body text-center">
                     <!-- Profile picture image-->
                     <img class="img-account-profile rounded-circle mb-2"
-                         src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                         src="{{ user.usermodel.picture.url }}" alt="">
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">{% trans 'JPG or PNG no larger than 5 MB' %}</div>
                     <!-- Profile picture upload button-->
@@ -99,7 +99,7 @@
             <div class="card mb-4">
                 <div class="card-header">{% trans 'Account Details' %}</div>
                 <div class="card-body">
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" action="{% url 'users:profile' %}">
                         {% csrf_token %}
                         <!-- Form Group (username)-->
                         <div class="mb-3">
@@ -144,7 +144,7 @@
         <!-- LinkedIn profile link-->
         <div class="mb-3">
             <label class="small mb-1" for="linkedinProfileLink">{% trans 'LinkedIn profile link' %}</label>
-            <input class="form-control" id="linkedinProfileLink" type="url" name="linkedin_url" placeholder="{% trans 'Enter your LinkedIn account' %}" value="{{ user.profile.linkedin_profile }}">
+            <input class="form-control" id="linkedinProfileLink" type="url" name="linkedin_url" placeholder="{% trans 'Enter your LinkedIn account' %}" value="{{ user.profile.linkedin_url }}">
         </div>
         
         <!-- Save changes button-->
