@@ -57,10 +57,6 @@
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="{% url 'feedback_offer:index' %}">{% trans 'Landing page' %}</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link click-scroll" href="{% url 'feedback_offer:comment' %}">{% trans 'Comments' %}</a>
-                </li>
                 
                 <li class="nav-item">
                     <a class="nav-link click-scroll" href="{% url 'users:profile' %}">{% trans 'Profile' %}</a>
@@ -103,11 +99,11 @@
             </select>
         </div>
         <div class="input-group ml-5">
-            <form>
-                <input type="text" class="form-control" placeholder="Search..."
+            <form method="GET" action="{% url 'feedback_offer:offers' %}">
+                <input type="text" class="form-control" name="search" placeholder="Search..."
                        aria-label="Search"
-                       aria-describedby="button-addon2">
-                <button class="btn btn-outline-primary" type="button" id="button-addon2">
+                       aria-describedby="button-addon2" value="{{ search_query }}">
+                <button class="btn btn-outline-primary" type="submit" id="button-addon2">
                     <i class="bi bi-search"></i>
                 </button>
             </form>

@@ -1,9 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from django.conf import settings
-from django.utils import translation
-from django.utils.translation import get_language, get_language_info
+from django.db.models import Q
 
 from feedback_offer.form import ProblemForm, OfferForm
 from feedback_offer.models import FAQModel, OfferModel, ProblemModel
@@ -51,23 +49,50 @@ def submit_offer_view(request):
     return render(request, 'main/forms/offer/offer-form.html', {'form': form})
 
 
+@login_required(login_url='users:login')
 def offers_page_view(request):
     selected_category = request.GET.get('category', 'offers')
+    search_query = request.GET.get('search', '')
 
     my_offers = OfferModel.objects.filter(user=request.user)
     demands = ProblemModel.objects.all()
     offers = OfferModel.objects.all()
 
+    search_offers = offers
+    search_problems = demands
+
+    if search_query:
+        search_offers = offers.filter(
+            Q(title_en__icontains=search_query) |
+            Q(description_en__icontains=search_query) |
+            Q(title_ru__icontains=search_query) |
+            Q(description_ru__icontains=search_query) |
+            Q(title_uz__icontains=search_query) |
+            Q(description_uz__icontains=search_query)
+        )
+
+        search_problems = demands.filter(
+            Q(title_en__icontains=search_query) |
+            Q(description_en__icontains=search_query) |
+            Q(title_ru__icontains=search_query) |
+            Q(description_ru__icontains=search_query) |
+            Q(title_uz__icontains=search_query) |
+            Q(description_uz__icontains=search_query)
+        )
+
     context = {
-        'offers': offers,
-        'demands': demands,
+        'offers': search_offers,
+        'demands': search_problems,
         'my_offers': my_offers,
         'selected_category': selected_category,
+        'search_query': search_query,
     }
+
     print("Selected Category:", selected_category)
     print("My Offers:", my_offers)
     print("Demands:", demands)
     print("User:", request.user)
+    print("Search Query:", search_query)
     return render(request, template_name='main/offers/offer.html', context=context)
 
 
