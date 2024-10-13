@@ -94,8 +94,6 @@
                     {% trans 'Show Demands' %}</option>
                 <option value="my_offers"> {% if selected_category == 'my_offers' %}selected{% endif %}
                     {% trans 'Show My Offers' %}</option>
-                <option value="my-written-comments" {% if selected_category == 'my-written-comments' %}selected{% endif %}>
-                    {% trans 'Show My Written Comments' %}</option>
             </select>
         </div>
         <div class="input-group ml-5">
@@ -193,32 +191,6 @@
         {% empty %}
             <p>No demands available for this category.</p>
         {% endfor %}
-
-
-        <!--    My Written Offers       -->
-
-        <div class="col-md-4 my-written-offers mb-4" style="display: none; margin-top: 25px">
-            <div class="card">
-                <div class="img-avatar">
-                    <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
-                </div>
-                <div class="card-text">
-                    <div class="title-total">
-                        <div class="title">Ant Collector</div>
-                        <a href='#'>My Written Offer</a>
-
-                        <div class="desc">Morgan has collected ants since they were six years old and now has many dozen
-                            ants but none in their pants.
-                        </div>
-                        <div class="actions">
-                            <i class="bi bi-heart">15</i>
-                            <i class="bi bi-eye">25</i>
-                            <i class="bi bi-chat">5</i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     {% endif %}
     <div id="pagination" class="text-center mb-4" style="margin-top: 50px;">
