@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 
@@ -58,42 +59,23 @@ def offers_page_view(request):
     demands = ProblemModel.objects.all()
     offers = OfferModel.objects.all()
 
-    search_offers = offers
-    search_problems = demands
-
     if search_query:
-        search_offers = offers.filter(
-            Q(title_en__icontains=search_query) |
-            Q(description_en__icontains=search_query) |
-            Q(title_ru__icontains=search_query) |
-            Q(description_ru__icontains=search_query) |
-            Q(title_uz__icontains=search_query) |
-            Q(description_uz__icontains=search_query)
+        offers = offers.filter(
+            Q(title__icontains=search_query) | Q(description__icontains=search_query)
         )
-
-        search_problems = demands.filter(
-            Q(title_en__icontains=search_query) |
-            Q(description_en__icontains=search_query) |
-            Q(title_ru__icontains=search_query) |
-            Q(description_ru__icontains=search_query) |
-            Q(title_uz__icontains=search_query) |
-            Q(description_uz__icontains=search_query)
+        demands = demands.filter(
+            Q(title__icontains=search_query) | Q(description__icontains=search_query)
         )
 
     context = {
-        'offers': search_offers,
-        'demands': search_problems,
-        'my_offers': my_offers,
+        'offers': offers if selected_category == 'offers' else None,
+        'demands': demands if selected_category == 'demands' else None,
+        'my_offers': my_offers if selected_category == 'my_offers' else None,
         'selected_category': selected_category,
         'search_query': search_query,
     }
 
-    print("Selected Category:", selected_category)
-    print("My Offers:", my_offers)
-    print("Demands:", demands)
-    print("User:", request.user)
-    print("Search Query:", search_query)
-    return render(request, template_name='main/offers/offer.html', context=context)
+    return render(request, 'main/offers/offer.html', context)
 
 
 def offer_detail_view(request, offer_id):

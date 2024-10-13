@@ -85,118 +85,106 @@
 
 <div class="container" style="margin-top: 120px;">
     <div id="button-container">
-        <div class="select-category mr-5">
-            <select class="form-select" id='data-selector' aria-label="Select category"
-            name="category">
-                <option value="offers" {% if selected_category == 'offers' %}selected{% endif %}>
-                    {% trans 'Show Offers' %}</option>
-                <option value="demands"> {% if selected_category == 'demands' %}selected{% endif %}
-                    {% trans 'Show Demands' %}</option>
-                <option value="my_offers"> {% if selected_category == 'my_offers' %}selected{% endif %}
-                    {% trans 'Show My Offers' %}</option>
-            </select>
-        </div>
-        <div class="input-group ml-5">
-            <form method="GET" action="{% url 'feedback_offer:offers' %}">
+        <form method="GET" action="{% url 'feedback_offer:offers' %}">
+            <div class="select-category mr-5">
+                <select class="form-select" id="data-selector" name="category" aria-label="Select category" onchange="this.form.submit()">
+                    <option value="offers" {% if selected_category == 'offers' %}selected{% endif %}>
+                        {% trans 'Show Offers' %}
+                    </option>
+                    <option value="demands" {% if selected_category == 'demands' %}selected{% endif %}>
+                        {% trans 'Show Demands' %}
+                    </option>
+                    <option value="my_offers" {% if selected_category == 'my_offers' %}selected{% endif %}>
+                        {% trans 'Show My Offers' %}
+                    </option>
+                </select>
+            </div>
+            <div class="input-group ml-5">
                 <input type="text" class="form-control" name="search" placeholder="Search..."
-                       aria-label="Search"
-                       aria-describedby="button-addon2" value="{{ search_query }}">
+                       aria-label="Search" aria-describedby="button-addon2"
+                       value="{{ search_query }}">
                 <button class="btn btn-outline-primary" type="submit" id="button-addon2">
                     <i class="bi bi-search"></i>
                 </button>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+
     <div id="card-container" class="row">
-    {% if selected_category == 'offers' %}
-        <h2 style="margin: 15px 5px">{% trans 'Offers' %}</h2>
-
-        <!--   Offers      -->
-    {% for offer in offers %}
-        <div class="col-md-4 offer mb-4" style="margin-top: 25px;">
-            <div class="card">
-                <div class="img-avatar">
-                    <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
-                </div>
-                <div class="card-text">
-                    <div class="title-total">{{ offer.created_at }}</div>
-                    <a href="{% url 'feedback_offer:offer_detail' offer.id %}">
-                        <div class="title">{{ offer.title }}</div>
-                        <a href='#'>{{ offer.user.username }}</a>
-                        <div class="desc">{{ offer.description }}</div>
-                        <div class="actions">
-                            <i class="bi bi-heart">5</i>
-                            <i class="bi bi-eye">{{ offer.views_count }}</i>
-                            <i class="bi bi-chat">5</i>
+        {% if selected_category == 'offers' %}
+            <h2 style="margin: 15px 5px">{% trans 'Offers' %}</h2>
+            {% for offer in offers %}
+                <div class="col-md-4 offer mb-4" style="margin-top: 25px;">
+                    <div class="card">
+                        <div class="img-avatar">
+                            <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
                         </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        {% empty %}
-            <p>No offers available for this category.</p>
-        {% endfor %}
-    {% elif selected_category == 'demands' %}
-        <h2>{% trans 'Problems' %}</h2>
-        <!-- Demands       -->
-        {% for demand in demands %}
-        <div class="col-md-4 demand mb-4" style="margin-top: 25px;">
-            <div class="card">
-                <div class="img-avatar">
-                    <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
-                </div>
-                <div class="card-text">
-                    <div class="title-total" {{ demand.created_at }}>
-                        <a href="{% url 'feedback_offer:demand_detail' demand_id.id %}">
-                        <div class="title">{{ demand.title }}</div>
-                        <a href='#'>Demands</a>
-                        <div class="desc">{{ demand.description|truncatechars:100 }}
-                        </div>
-                        <div class="actions">
-                            <i class="bi bi-heart">{{ demand.count_view }}</i>
+                        <div class="card-text">
+                            <div class="title-total">
+                                <a href="{% url 'feedback_offer:offer_detail' offer.id %}">
+                                    <div class="title">{{ offer.title }}</div>
+                                    <a href="#">{{ offer.user.username }}</a>
+                                    <div class="desc">{{ offer.description }}</div>
+                                    <div class="actions">
+                                        <i class="bi bi-eye">{{ offer.views_count }}</i>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        {% empty %}
-            <p>No demands available for this category.</p>
-        {% endfor %}
-
-        <!--  My Offers      -->
-    {% elif selected_category == 'my_offers' %}
-        {% for my_offer in my_offers %}
-        <div class="col-md-4 my-offers mb-4" style="margin-top: 25px">
-            <div class="card">
-                <div class="img-avatar">
-                    <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
-                </div>
-                <div class="card-text">
-                    <div class="title-total">
-                        <div class="title">{{ my_offer.title }}</div>
-                        <a href='#'>{{ my_offer.user.username }}</a>
-
-                        <div class="desc">{{ my_offer.description }}
+            {% empty %}
+                <p>No offers available for this category.</p>
+            {% endfor %}
+        {% elif selected_category == 'demands' %}
+            <h2>{% trans 'Problems' %}</h2>
+            {% for demand in demands %}
+                <div class="col-md-4 demand mb-4" style="margin-top: 25px;">
+                    <div class="card">
+                        <div class="img-avatar">
+                            <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
                         </div>
-                        <div class="actions">
-                            <i class="bi bi-heart">15</i>
-                            <i class="bi bi-eye">25</i>
-                            <i class="bi bi-chat">5</i>
+                        <div class="card-text">
+                            <div class="title-total">
+                                <a href="{% url 'feedback_offer:demand_detail' demand.id %}">
+                                    <div class="title">{{ demand.title }}</div>
+                                    <a href="#">Demands</a>
+                                    <div class="desc">{{ demand.description }}</div>
+                                    <div class="actions">
+                                        <i class="bi bi-eye">{{ demand.views_count }}</i>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        {% empty %}
-            <p>No demands available for this category.</p>
-        {% endfor %}
-    </div>
-    {% endif %}
-    <div id="pagination" class="text-center mb-4" style="margin-top: 50px;">
-        <button id="prev" class="btn" disabled>Previous</button>
-        <button id="next" class="btn">Next</button>
+            {% empty %}
+                <p>No demands available for this category.</p>
+            {% endfor %}
+        {% elif selected_category == 'my_offers' %}
+            <h2>{% trans 'My Offers' %}</h2>
+            {% for my_offer in my_offers %}
+                <div class="col-md-4 my-offers mb-4" style="margin-top: 25px;">
+                    <div class="card">
+                        <div class="img-avatar">
+                            <img src="{% static 'files/images/white-logo.png' %}" alt="Avatar">
+                        </div>
+                        <div class="card-text">
+                            <div class="title-total">
+                                <div class="title">{{ my_offer.title }}</div>
+                                <a href="#">{{ my_offer.user.username }}</a>
+                                <div class="desc">{{ my_offer.description }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No offers available for this category.</p>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
+
 <div id="page-info" class="text-center"></div>
 
 <!--footer-->
